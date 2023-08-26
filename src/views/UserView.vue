@@ -7,12 +7,13 @@ const api = import.meta.env.VITE_API_URL;
 
 const submitEmail = () => {
     const redirectUrl = 'localhost:5173/';
+
     const data = {
         email: email.value,
         redirectUrl: redirectUrl
     }
     
-    axios.post( api + '/users/register', data)
+    axios.post(api + '/users/register', data)
     .then((response) => {
         console.log(response);
     }).catch((error) => {
@@ -34,7 +35,7 @@ const submitEmail = () => {
                     <span class="label-text-alt">Bottom Left label</span>
                 </label>
             </div>
-            <button class="btn btn-outline btn-info" @click="submitEmail()">Enviar</button>
+            <button class="btn btn-outline btn-info" @click.prevent="submitEmail()">Enviar</button>
         </form>
     </section>
 </template>
