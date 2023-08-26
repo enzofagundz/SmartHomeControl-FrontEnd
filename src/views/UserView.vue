@@ -6,7 +6,7 @@ const email = ref<String>('');
 const api = import.meta.env.VITE_API_URL;
 
 const submitEmail = () => {
-    const redirectUrl = 'http://127.0.0.1:5173';
+    const redirectUrl = 'http://localhost:5173/register';
 
     const data = {
         email: email.value,
