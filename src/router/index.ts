@@ -22,14 +22,14 @@ const router = createRouter({
     },
     {
       path: '/register/:key',
-      name: 'register',
+      name: 'registerConfirm',
       component: () => import('../views/RegisterView.vue')
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'register') {
+  if (to.name === 'registerConfirm') {
     const api = import.meta.env.VITE_API_URL;
     const key = to.params.key //Get key from URL
 
