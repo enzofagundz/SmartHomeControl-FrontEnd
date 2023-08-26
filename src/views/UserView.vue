@@ -6,7 +6,7 @@ const email = ref<String>('');
 const api = import.meta.env.VITE_API_URL;
 
 const submitEmail = () => {
-    const redirectUrl = 'localhost:5173/';
+    const redirectUrl = 'http://127.0.0.1:5173';
 
     const data = {
         email: email.value,
@@ -19,6 +19,8 @@ const submitEmail = () => {
     }).catch((error) => {
         console.log(error);
     });
+
+    email.value = '';
 }
 
 </script>
