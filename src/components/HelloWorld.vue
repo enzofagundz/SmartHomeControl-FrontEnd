@@ -20,6 +20,9 @@
       <li>
         <router-link to="/registerConfirm">Register Confirm</router-link>
       </li>
+      <li>
+        <router-link to="/dashboard">Dashboard</router-link>
+      </li>
     </ul>
   </div>
 </template>

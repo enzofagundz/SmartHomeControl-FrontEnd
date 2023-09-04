@@ -1,1 +1,1 @@
-export { useFeatureStore } from './FeatureStore';
+export { useCookiesStore } from './CookieStore';
