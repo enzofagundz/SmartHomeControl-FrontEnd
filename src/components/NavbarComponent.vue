@@ -13,6 +13,7 @@ const logout = () => {
         console.log(res);
     })
     
+    store.deleteCookie();
     router.push('/login');
 }
 
@@ -39,7 +40,7 @@ const logout = () => {
                     </li>
                     <li><a>Settings</a></li>
                     <li>
-                        <a @click.prevent="logout()">Logout</a>
+                        <a @click="logout()">Logout</a>
                     </li>
                 </ul>
             </div>

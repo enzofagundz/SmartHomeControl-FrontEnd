@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useCookiesStore } from '@/stores/';
 
 const store = useCookiesStore();
-
 const router = useRouter();
 
 
