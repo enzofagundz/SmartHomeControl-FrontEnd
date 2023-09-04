@@ -37,7 +37,7 @@ const submitEmail = () => {
                     <span class="label-text-alt">Bottom Left label</span>
                 </label>
             </div>
-            <button class="btn btn-outline btn-info" @click.prevent="submitEmail()">Enviar</button>
+            <button class="btn btn-outline btn-info btn-wide" @click.prevent="submitEmail()">Enviar</button>
         </form>
     </section>
 </template>

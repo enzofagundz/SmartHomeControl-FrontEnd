@@ -59,10 +59,24 @@ router.beforeEach((to, from, next) => {
     const key = to.params.key //Get key from URL
     console.log(api+'/users/register/'+key)
     if (key) { //Verify if key exists
-      axios.get(api+'/users/register/'+key, {
+      // axios.get(api+'/users/register/'+key, {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Access-Control-Allow-Origin": "*"
+      //   }
+      // })
+      // .then(res => {
+      //   console.log(res);
+      // })
+      // .catch(err => {
+      //   console.log(err);
+      // })
+
+      fetch(api+'/users/register/'+key, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
         }
       })
       .then(res => {
