@@ -5,7 +5,6 @@ import { useCookiesStore } from '@/stores/';
 const store = useCookiesStore();
 const router = useRouter();
 
-
 interface User {
     email: String,
     password: String
@@ -29,7 +28,7 @@ const submitForm = () => {
             store.setCookie('token', res.data.token);
             router.push('/dashboard');
         })
-}
+    }
 </script>
 
 <template>

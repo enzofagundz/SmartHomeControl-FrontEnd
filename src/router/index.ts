@@ -58,9 +58,10 @@ router.beforeEach((to, from, next) => {
   }
   
   if (to.meta?.auth) {
-    const cookies = useCookiesStore();
-    const token = cookies.getCookie();
-    if (!token) {
+    const store = useCookiesStore();
+    const token = store.getToken();
+    const cookie = store.getCookie();
+    if (!token && !cookie) {
       router.push({ name: 'login' })
     }
   }
