@@ -13,7 +13,7 @@ const submitEmail = () => {
         redirectUrl: redirectUrl
     }
     
-    axios.post(api + '/api/users/register', data)
+    axios.post(api + '/users/register', data)
     .then((response) => {
         console.log(response);
     }).catch((error) => {

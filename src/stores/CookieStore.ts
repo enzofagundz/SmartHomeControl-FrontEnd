@@ -10,5 +10,9 @@ export const useCookiesStore = defineStore("cookies", () => {
         return cookies[0].split('=')[1];
     }
 
-    return { getCookie, setCookie }
+    function deleteCookie(): void {
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    }
+
+    return { getCookie, setCookie, deleteCookie }
 });

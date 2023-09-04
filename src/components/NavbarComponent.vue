@@ -7,9 +7,9 @@ const store = useCookiesStore();
 
 const logout = () => {
 
-    const headers = { Authorization: 'Bearer ' +  store.getCookie('token')}
+    const headers = { Authorization: 'Bearer ' +  store.getCookie()}
 
-    axios.delete(api + '/api/auth', { headers }).then((res) => {
+    axios.delete(api + '/auth', { headers }).then((res) => {
         console.log(res);
     })
     
@@ -21,7 +21,7 @@ const logout = () => {
 <template>
     <div class="navbar bg-base-100">
         <div class="flex-1">
-            <a class="text-xl normal-case btn btn-ghost">Connectify</a>
+            <router-link :to="{name: 'home'}" class="text-xl normal-case btn btn-ghost">Connectify</router-link>
         </div>
         <div class="flex-none gap-2">
             <div class="dropdown dropdown-end">

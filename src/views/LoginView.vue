@@ -25,7 +25,7 @@ const submitForm = () => {
         password: user.password,
     }
 
-    axios.post(api + '/api/auth', data)
+    axios.post(api + '/auth', data)
         .then((res) => {
             store.setCookie('token', res.data.token);
             router.push('/dashboard');
@@ -35,7 +35,7 @@ const submitForm = () => {
 
 <template>
     <section>
-        <form action="">
+        <form @submit.prevent="submitForm()">
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="email">
                     <span class="label-text">Digite seu e-mail</span>
@@ -56,7 +56,7 @@ const submitForm = () => {
                     <span class="label-text-alt">Bottom Left label</span>
                 </label>
             </div>
-            <button class="btn btn-outline btn-info btn-wide" @click.prevent="submitForm()">Enviar</button>
+            <button class="btn btn-outline btn-info btn-wide" type="submit">Enviar</button>
         </form>
     </section>
 </template>

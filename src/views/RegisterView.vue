@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
-
+import { useCookiesStore } from '@/stores/';
+const store = useCookiesStore();
 
 interface User {
     name: String,
@@ -15,14 +16,10 @@ const user: User = reactive({
 });
 
 const msg = ref<String>('');
-
 const route = useRoute();
 const router = useRouter();
 
 const submitForm = () => {
-
-    // Verificar se senha e confirmação de senha são iguais
-
     if (user.password !== user.retypedPassword) {
         msg.value = 'Senhas não conferem';
 
@@ -33,37 +30,23 @@ const submitForm = () => {
         return;
     }
 
-    // Enviar dados para o backend
-
     const api = import.meta.env.VITE_API_URL;
-
+    
     const data = {
         key: route.params.key,
         name: user.name,
         password: user.password,
         passwordConfirmation: user.retypedPassword
     }
-
-    console.log(data);
-
-    axios.put(api + '/api/users/register/', data)
+    
+    axios.put(api + '/users/register/', data)
         .then(async (res) => {
-            // Mandar requisição para o login com email e senha do usuário. O email é retornado no response do backend
-            // Recebe o bearer token e salva no local storage
-            // Redireciona para a página de dashboard
-
-            console.log(res);
-
             const data = {
                 email: res.data.email,
                 password: user.password
             }
-
-            await axios.post(api + '/api/auth', data).then((res) => {
-                console.log(res);
-
-                localStorage.setItem('token', res.data.token);
-
+            await axios.post(api + '/auth', data).then((res) => {
+                store.setCookie('token', res.data.token);
                 router.push('/dashboard');
             }).catch((err) => {
                 console.log(err);
@@ -85,7 +68,7 @@ const submitForm = () => {
             </div>
         </Transition>
 
-        <form action="">
+        <form @submit.prevent="submitForm()">
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="name">
                     <span class="label-text">Digite seu nome</span>
@@ -116,7 +99,7 @@ const submitForm = () => {
                     <span class="label-text-alt">Bottom Left label</span>
                 </label>
             </div>
-            <button class="btn btn-outline btn-info btn-wide" @click.prevent="submitForm()">Enviar</button>
+            <button class="btn btn-outline btn-info btn-wide" type="submit">Enviar</button>
         </form>
     </section>
 </template>

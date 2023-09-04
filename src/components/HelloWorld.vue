@@ -5,7 +5,7 @@
 <template>
   <div>
     <h1>
-      HelloWorld.vue
+      Home
     </h1>
     <ul>
       <li>
@@ -13,12 +13,6 @@
       </li>
       <li>
         <router-link to="/about">About</router-link>
-      </li>
-      <li>
-        <router-link to="/register">Register</router-link>
-      </li>
-      <li>
-        <router-link to="/registerConfirm">Register Confirm</router-link>
       </li>
       <li>
         <router-link to="/dashboard">Dashboard</router-link>
