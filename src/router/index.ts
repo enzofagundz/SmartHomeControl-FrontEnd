@@ -27,71 +27,28 @@ const router = createRouter({
     }
   ]
 })
-/*
+
 router.beforeEach((to, from, next) => {
-  console.log(to.name)
   if (to.name === 'registerConfirm') {
-    const api = import.meta.env.VITE_API_URL;
-    const key = to.params.key //Get key from URL
-    console.log(key)
+   
+    const key = to.params.key //Get key from URL    
     if (key) { //Verify if key exists
-      axios.get(api+'/users/register/'+key)
+      
+      axios.get('http://localhost:3333'+'/api/users/register/'+key)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => {
-        console.log(err);
-      })
-    } 
-    
-    else { //If key not exists, redirect to home
-      next({ name: 'home' })
-    }
-  }
-  
-  next()
-})
-*/
-
-router.beforeEach((to, from, next) => {
-  if (to.name === 'registerConfirm') {
-    const api = import.meta.env.VITE_API_URL;
-    const key = to.params.key //Get key from URL
-    console.log(api+'/users/register/'+key)
-    if (key) { //Verify if key exists
-      // axios.get(api+'/users/register/'+key, {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "Access-Control-Allow-Origin": "*"
-      //   }
-      // })
-      // .then(res => {
-      //   console.log(res);
-      // })
-      // .catch(err => {
-      //   console.log(err);
-      // })
-
-      fetch(api+'/users/register/'+key, {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+        console.log(err.response.status);
+        if(err.response.status == 400){
+          return { name: 'home' }
         }
+
       })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      })
+
     } 
-
-    else { //If key not exists, redirect to home
-      next({ name: 'home' })
-    }
-  }
-
+  }   
+  
   next()
 })
 

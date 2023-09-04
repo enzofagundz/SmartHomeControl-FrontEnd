@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import axios from 'axios';
+
 
 interface User {
     name: String,
@@ -10,12 +12,11 @@ const user: User = reactive({
     name: '',
     password: '',
     retypedPassword: ''
-})
-
-// api = https://0ae0-189-126-184-214.ngrok-free.app/users/register/
-// Método PUT
+});
 
 const msg = ref<String>('');
+
+const route = useRoute();
 
 const submitForm = () => {
 
@@ -32,9 +33,20 @@ const submitForm = () => {
     }
 
     // Enviar dados para o backend
+
+    const api = import.meta.env.VITE_API_URL;
+
+    const data = {
+        key: route.params.key,
+        name: user.name,
+        password: user.password,
+        passwordConfirmation: user.retypedPassword
+    }
+
+    console.log(data);
+    
+    axios.put(api + '/api/users/register/', data);
 }
-
-
 </script>
 
 <template>
