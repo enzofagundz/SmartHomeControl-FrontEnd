@@ -5,7 +5,8 @@
     "src/**/*",
     "src/**/*.vue",
     "./node_modules/.auto-imports-type/auto-imports.d.ts",
-    "./node_modules/.auto-imports-type/components.d.ts"
+    "./node_modules/.auto-imports-type/components.d.ts",
+    "src/utils/*.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {

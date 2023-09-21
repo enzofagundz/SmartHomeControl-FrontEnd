@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import axios from 'axios'
+import { useCookiesStore } from '@/stores'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,17 @@ const router = createRouter({
       path: '/register/:key',
       name: 'registerConfirm',
       component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue'),
+      meta: { auth: true }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     }
   ]
 })
@@ -43,13 +55,7 @@ router.beforeEach((to, from, next) => {
         if(err.response.status == 400){
           return { name: 'home' }
         }
-
       })
-
     } 
-  }   
-  
-  next()
-})
-
-export default router
+  }
+});
