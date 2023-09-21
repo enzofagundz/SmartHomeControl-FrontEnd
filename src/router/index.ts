@@ -44,8 +44,7 @@ router.beforeEach((to, from, next) => {
   if (to.name === 'registerConfirm') {
    
     const key = to.params.key //Get key from URL    
-    if (key) { //Verify if key exists
-      
+    if (key) { //Verify if key exists      
       axios.get('http://localhost:3333'+'/users/register/'+key)
       .then(res => {
         console.log(res.data);
@@ -58,6 +57,8 @@ router.beforeEach((to, from, next) => {
       })
     } 
   }
+
+  next();
 });
 
 export {router};

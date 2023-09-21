@@ -29,7 +29,7 @@ const submitForm = () => {
             sessionStorage.setItem('email', JSON.stringify(user.email));
             router.push('/dashboard');
         })
-    }
+}
 </script>
 
 <template>
