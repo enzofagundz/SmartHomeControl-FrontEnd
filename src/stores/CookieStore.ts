@@ -20,6 +20,7 @@ export const useCookiesStore = defineStore("cookies", () => {
             const token = cookie.split('=')[1];
             return token;
         }
+        
         return '';
     }
 

@@ -23,6 +23,8 @@ const submitForm = () => {
         password: user.password,
     }
 
+    sessionStorage.setItem('email', JSON.stringify(user.email));
+
     axios.post(api + '/auth', data)
         .then((res) => {
             store.setCookie('token', res.data.token);
