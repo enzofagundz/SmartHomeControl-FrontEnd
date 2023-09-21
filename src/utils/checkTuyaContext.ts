@@ -1,26 +1,27 @@
-// Fazer a requisição para a rota /api/users/add-tuya-context/:email
-// Exportar a função
-
 import axios from "axios";
 import { useCookiesStore } from "@/stores/CookieStore";
 
 const store = useCookiesStore();
-
-export default function checkTuyaContext(API: string ,email: string | null) {
-
+const API = import.meta.env.VITE_API_URL;
+export default async function checkTuyaContext(email: string | null): Promise<any> {
     if (!email) {
         return;
     }
-    
+    const token = store.getCookie();
     axios.post(API + '/users/add-tuya-context/', {
         headers: {
-            'Authorization': 'Bearer ' + store.getCookie(),
+            'Authorization': `Bearer ${token}`,
         },
         data: {
-            email
+            email: email
         }
     })
     .then(res => {
-        console.log(res.data);
-    })
+        return true;
+    }).catch(err => {
+        if(err.response.status === 401) {
+            // Se o usuario chegou aqui, é por que ele precisa cadastrar o TuyaContext
+            return false;
+        }
+    });
 }

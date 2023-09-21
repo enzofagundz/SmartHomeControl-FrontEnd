@@ -24,11 +24,11 @@ const submitForm = () => {
     }
 
     axios.post(api + '/auth', data)
-        .then((res) => {
-            store.setCookie('token', res.data.token);
-            sessionStorage.setItem('email', JSON.stringify(user.email));
-            router.push('/dashboard');
-        })
+    .then((res) => {
+        sessionStorage.setItem('email', JSON.stringify(user.email));
+        store.setCookie('token', res.data.token);
+        router.push('/dashboard');
+    })
 }
 </script>
 
