@@ -1,5 +1,8 @@
 <script setup lang="ts">
-
+import checkTuyaContext from '@/utils/checkTuyaContext';
+const API = import.meta.env.VITE_API_URL;
+const email: string | null = sessionStorage.getItem('email');
+checkTuyaContext(API, email);
 </script>
 
 <template>
