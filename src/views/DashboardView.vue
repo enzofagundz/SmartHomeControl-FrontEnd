@@ -2,11 +2,13 @@
 import checkTuyaContext from '@/utils/checkTuyaContext';
 import axios from "axios";
 import { useCookiesStore } from "@/stores/CookieStore";
+import { useTuyaContextStore } from "@/stores/TuyaContextStore";
 
 const email: string | null = sessionStorage.getItem('email');
 const API = import.meta.env.VITE_API_URL;
-const store = useCookiesStore();
-const token = store.getCookie();
+const cookieStore = useCookiesStore();
+const tuyaContextStore = useTuyaContextStore();
+const token = cookieStore.getCookie();
 axios.post(API + '/users/add-tuya-context/', {
     headers: {
         'Authorization': `Bearer ${token}`,
@@ -29,9 +31,14 @@ axios.post(API + '/users/add-tuya-context/', {
 
 <template>
   <Suspense>
-    
     <TuyaContextForm></TuyaContextForm>
   </Suspense>
+
+  <button class="btn btn-outline"
+    v-if="!tuyaContextStore.getTuyaContext"
+  >
+    Adicionar device
+  </button>
 </template>
 
 <style scoped></style>

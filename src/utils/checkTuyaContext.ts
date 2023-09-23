@@ -20,7 +20,6 @@ export default async function checkTuyaContext(email: string | null): Promise<an
         return true;
     }).catch(err => {
         if(err.response.status === 401) {
-            // Se o usuario chegou aqui, é por que ele precisa cadastrar o TuyaContext
             return false;
         }
     });
