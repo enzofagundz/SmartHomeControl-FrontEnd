@@ -42,7 +42,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'registerConfirm') {
-   
     const key = to.params.key //Get key from URL    
     if (key) { //Verify if key exists      
       axios.get('http://localhost:3333'+'/users/register/'+key)

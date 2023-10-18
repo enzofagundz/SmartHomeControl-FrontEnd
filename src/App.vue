@@ -3,12 +3,14 @@
 </script>
 
 <template>
+  <Transition name="fade">
     <section>
       <RouterView />
     </section>
+  </Transition>
 </template>
 <style scoped>
 section {
-    @apply max-w-sm mx-auto flex flex-col justify-center w-[100vw] h-[100vh] items-center;
+    @apply max-w-sm mx-auto flex flex-col w-[100vw] h-[100vh] items-center justify-center;
 }
 </style>

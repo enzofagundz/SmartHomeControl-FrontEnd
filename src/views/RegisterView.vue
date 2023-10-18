@@ -68,7 +68,11 @@ const submitForm = () => {
                 <span>{{ msg }}</span>
             </div>
         </Transition>
-
+        <div>
+            <h1>
+                Connectify
+            </h1>
+        </div>
         <form @submit.prevent="submitForm()">
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="name">
@@ -76,9 +80,6 @@ const submitForm = () => {
                 </label>
                 <input type="text" placeholder="Seu nome aqui" class="w-full max-w-xs input input-bordered" name="name"
                     v-model="user.name" required />
-                <label class="label">
-                    <span class="label-text-alt">Bottom Left label</span>
-                </label>
             </div>
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="password">
@@ -86,23 +87,29 @@ const submitForm = () => {
                 </label>
                 <input type="password" placeholder="Sua senha aqui" class="w-full max-w-xs input input-bordered"
                     name="password" v-model="user.password" required />
-                <label class="label">
-                    <span class="label-text-alt">Bottom Left label</span>
-                </label>
             </div>
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="retypedPassword">
-                    <span class="label-text">Digite novamente sua senha</span>
+                    <span class="label-text">Redigite sua senha</span>
                 </label>
                 <input type="password" placeholder="Sua senha aqui" class="w-full max-w-xs input input-bordered"
                     name="retypedPassword" v-model="user.retypedPassword" required />
-                <label class="label">
-                    <span class="label-text-alt">Bottom Left label</span>
-                </label>
             </div>
-            <button class="btn btn-outline btn-info btn-wide" type="submit">Enviar</button>
+            <button class="btn btn-primary btn-wide" type="submit">Enviar</button>
         </form>
     </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+    h1 {
+        @apply text-4xl font-bold text-center;
+    }
+
+    section {
+        @apply w-full h-2/3 flex flex-col items-center justify-evenly;
+    }
+    
+    .btn-wide {
+        @apply mt-4;
+    }
+</style>

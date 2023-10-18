@@ -34,6 +34,11 @@ const submitForm = () => {
 
 <template>
     <section>
+        <div>
+            <h1>
+                Connectify
+            </h1>
+        </div>
         <form @submit.prevent="submitForm()">
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="email">
@@ -41,9 +46,6 @@ const submitForm = () => {
                 </label>
                 <input type="text" placeholder="Seu nome aqui" class="w-full max-w-xs input input-bordered" name="email"
                     v-model="user.email" required />
-                <label class="label">
-                    <span class="label-text-alt">Bottom Left label</span>
-                </label>
             </div>
             <div class="w-full max-w-xs form-control">
                 <label class="label" for="password">
@@ -51,13 +53,35 @@ const submitForm = () => {
                 </label>
                 <input type="password" placeholder="Sua senha aqui" class="w-full max-w-xs input input-bordered"
                     name="password" v-model="user.password" required />
-                <label class="label">
-                    <span class="label-text-alt">Bottom Left label</span>
-                </label>
             </div>
-            <button class="btn btn-outline btn-info btn-wide" type="submit">Enviar</button>
+            <button class="btn btn-wide btn-primary" type="submit">Enviar</button>
         </form>
+        <div id="register_link">
+            <router-link :to="{ name: 'register'}" class="btn btn-active btn-link">
+                Não tem uma conta? Crie uma aqui
+            </router-link>
+        </div>
     </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+    section {
+        @apply w-full h-2/3 flex flex-col items-center justify-evenly;
+    }
+
+    #register_link {
+        @apply mt-4;
+    }
+
+    h1 {
+        @apply text-4xl font-bold text-center;
+    }
+
+    .form-control {
+        @apply mb-4;
+    }
+
+    button {
+        @apply mt-4;
+    }
+</style>

@@ -50,39 +50,38 @@ const submitForm = () => {
             <form @submit.prevent="submitForm()">
                 <div class="w-full max-w-xs form-control">
                     <label class="label" for="accessKey">
-                        <span class="label-text">Access key</span>
+                        <span class="label-text">
+                            Chave de acesso
+                        </span>
                     </label>
-                    <input type="text" placeholder="Seu nome aqui" class="w-full max-w-xs input input-bordered"
+                    <input type="text" placeholder="Sua chave de acesso aqui" class="w-full max-w-xs input input-bordered"
                         name="accessKey" v-model="user.accessKey" required />
-                    <label class="label">
-                        <span class="label-text-alt">Bottom Left label</span>
-                    </label>
                 </div>
-                <div class="w-full max-w-xs form-control">
+                <div class="w-full max-w-xs form-control" >
                     <label class="label" for="baseUrl">
-                        <span class="label-text">Base Url</span>
+                        <span class="label-text">Base URL</span>
                     </label>
-                    <input type="text" placeholder="Sua senha aqui" class="w-full max-w-xs input input-bordered"
+                    <input type="text" placeholder="Sua base URL aqui aqui" class="w-full max-w-xs input input-bordered"
                         name="baseUrl" v-model="user.baseUrl" required />
-                    <label class="label">
-                        <span class="label-text-alt">Bottom Left label</span>
-                    </label>
                 </div>
                 <div class="w-full max-w-xs form-control">
                     <label class="label" for="secretKey">
-                        <span class="label-text">Secret Key</span>
+                        <span class="label-text">
+                            Chave secreta
+                        </span>
                     </label>
-                    <input type="text" placeholder="Sua senha aqui" class="w-full max-w-xs input input-bordered"
+                    <input type="text" placeholder="Sua chave secreta aqui" class="w-full max-w-xs input input-bordered"
                         name="secretKey" v-model="user.secretKey" required />
-                    <label class="label">
-                        <span class="label-text-alt">Bottom Left label</span>
-                    </label>
                 </div>
-                <button class="btn btn-outline btn-info btn-wide" type="submit">Enviar</button>
+                <button class="w-full mt-4 btn btn-primary" type="submit">
+                    Adicionar
+                </button>
             </form>
         </div>
         <form method="dialog" class="modal-backdrop">
-            <button>close</button>
+            <button>
+                Cancelar
+            </button>
         </form>
     </dialog>
 </template>
